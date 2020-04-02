@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import createRouter from './router/router'
+import { Provider } from 'mobx-react'
+import stores from './stores'
 import * as serviceWorker from './serviceWorker';
+import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider {...stores}>
+      {createRouter()}
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
