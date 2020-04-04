@@ -1,0 +1,82 @@
+#home {
+  .header {
+    background: #6f50ff;
+    height: 0.8rem;
+    border-right: solid 0.5px #6953cd;
+    border-left: solid 0.5px #6953cd;
+    input {
+      font-size: 0.3rem;
+      margin: auto;
+      display: block;
+      height: 0.6rem;
+      width: 95%;
+      border-radius: 9px;
+      text-align: center;
+      border: 0;
+    }
+  }
+  .contact-list {
+    box-shadow: 0px 4px 5px 0px #ddd;
+    background: white;
+  }
+  .contact-item {
+    height: 1.5rem;
+    border: solid 1px #ddd;
+    border-top:0;
+    padding: 0.36rem;
+    padding-left: 0.5rem;
+    position: relative;
+    .name {
+      color: rgb(93, 93, 93);
+      font-size: 0.34rem;
+      font-weight: bold;
+      margin-bottom: 0.1rem;
+    }
+    .email {
+      color: rgb(157, 157, 157);
+      font-size: 0.25rem;
+      font-weight: bold;
+    }
+    button {
+      height: 1.0rem;
+      width: 0.6rem;
+      float: right;
+      margin-left: 0.5rem;
+      img {
+        height: auto;
+        width: auto;
+        max-height: 100%;
+        max-width: 100%;
+        position: absolute;
+        top: 0.2rem;
+        right:0;
+      }
+    }
+    .op-call {
+      position: absolute;
+      right: 0.3rem;
+      top: 0.2rem;
+    }
+    .op-email {
+      position: absolute;
+      right: 1.2rem;
+      top: 0.2rem;
+    }
+    .new-flag {
+      background-color: rgb(177, 82, 213); 
+      border-radius: 0.3rem;
+      display: inline-block;
+      color: #eee;
+      font-size: 0.24rem;
+      padding: 0 0.3rem;
+      margin-left: 0.1rem;
+      height: 0.4rem;
+      line-height: 0.4rem;
+      transform: translate(0, -2px) scale(0.7, 0.8);
+      box-shadow: 0 0 2px #b152d5;
+    }
+  }
+  .contact-item:last-child{
+    border-bottom: 0;
+  }
+}

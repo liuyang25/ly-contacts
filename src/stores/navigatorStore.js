@@ -10,9 +10,9 @@ export class NavigatorStore {
   setNavigator(options) {
     this.title = options.title
     this.iconL = options.iconL || 'back'
-    this.fnL = options.fnL || window.history.back
-    this.iconR = options.iconR
-    this.fnR = options.fnR 
+    this.fnL = options.fnL || (()=>{window.history.back()})
+    this.iconR = options.iconR || ''
+    this.fnR = options.fnR
   }
   constructor() {
   }

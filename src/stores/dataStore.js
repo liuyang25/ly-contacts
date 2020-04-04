@@ -6,13 +6,14 @@ export class DataStore {
 
   constructor() {
     this.contacts = []
-    this.current = {}
+    this.current = JSON.parse(sessionStorage.getItem('contacts.current') || '{}')
   }
   updateContacts(datas) {
     this.contacts = datas
   }
   setCurrent(data) {
     this.current = data
+    sessionStorage.setItem('contacts.current', JSON.stringify(data))
   }
   updateCurrent(){
 

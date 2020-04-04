@@ -8,7 +8,7 @@ class Loading extends React.PureComponent<Props> {
   componentDidMount() {}
   render() {
     return (
-      <div class={style.loading}>
+      <div className={style.loading}>
         <img src={loading}/>
       </div>
     )
