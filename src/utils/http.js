@@ -1,10 +1,10 @@
 import axios from 'axios'
 import message from 'vanilla-antd-message'
-import 'vanilla-antd-message/dist/style.css'
 
 // const message = new Message();
 const service = axios.create({
-  baseURL: process.env.USE_MOCK ? '/mock' : process.env.BASE_API,
+  // baseURL: process.env.USE_MOCK ? '/mock' : process.env.BASE_API,
+  baseURL: '/api',
   timeout: 30000, 
   withCredentials:true,
 })
