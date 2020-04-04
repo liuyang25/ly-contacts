@@ -155,3 +155,125 @@
     }
   }
 }
+
+#detail-operating {
+  .operation-title {
+    height: 1.35rem;
+    background-color: white;
+    box-shadow: 0px 4px 5px 0px #ddd;
+    text-align: center;
+    .move-rt {
+      display: inline-block;
+      height: 100%;
+      line-height: 1rem;
+      position: relative;
+      padding-left: 0.8rem;
+      img {
+        height: 0.8rem;
+        position: absolute;
+        top:0.3rem;
+        left: 0;
+      }
+      span {
+        font-size: 0.5rem;
+        color: #6f50ff;
+      }
+    }
+  }
+  .operation-info {
+    height: 0.8rem;
+    font-size: 0.34rem;
+    text-shadow: 1px 0 1px #aaa;
+    line-height: 0.8rem;
+    color: rgb(93, 93, 93);
+    padding: 0 0.4rem;
+    padding-top: 0.1rem;
+
+    span {
+      float: right;
+      color: rgb(157, 157, 157);
+      font-size: 0.24rem;
+      text-shadow: 0.5px 0 0.5px #aaa;
+    }
+  }
+  .operation-input {
+    background-color: white;
+    box-shadow: 0px 4px 5px 0px #ddd;
+    height: 6.5rem;
+    text-align: center;
+    textarea {
+      height: 5.3rem;
+      width: 100%;
+      padding: 0.5rem 0.3rem;
+      font-size: 0.34rem;
+      font-weight: bold;
+      color: rgb(93, 93, 93);
+    }
+    textarea::placeholder {
+      color: #ddd;
+      font-size: 0.3rem;
+    }
+    div {
+      line-height: 0.3rem;
+    }
+    button.enable {
+      background-color:#63d01f;
+    }
+    button {
+      font-size: 0.3rem;
+      color:white;
+      width: 1.8rem;
+      height: 0.65rem;
+      background-color: #c4c4c4;
+      border-radius: 0.3rem;
+    }
+  }
+}
+#modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.45);
+
+  font-size: 0.3rem;
+  color: rgb(2, 123, 255);
+
+  .options {
+    border-radius: 0.2rem;
+    background-color: #eee;
+    position: absolute;
+    bottom: 2.1rem;
+    left: 0.2rem;
+    width: 7.1rem;
+    height: 2.1rem;
+    padding: 0 0.2rem;
+    line-height: 1.1rem;
+    text-align: center;
+    font-size: 0.4rem;
+
+    padding: 0 0.1rem;
+
+    div:first-child {
+      border-bottom: solid 1px #ddd;
+    }
+  }
+  .cancel {
+    border-radius: 0.2rem;
+    background-color: white;
+    position: absolute;
+    bottom: 0.8rem;
+    left: 0.2rem;
+    width: 7.1rem;
+    height: 1.1rem;
+    padding: 0 0.2rem;
+    line-height: 1.1rem;
+    text-align: center;
+    font-size: 0.4rem;
+    font-weight: bold;
+  }
+}
+

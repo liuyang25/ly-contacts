@@ -51,9 +51,9 @@ function detail(req, param){
       name: 'John Chan',
       email: 'john@gmai.com',
       phone: '09969712111',
-      status: 3,
+      status: 0,
       activities: [
-        {
+        /*{
           type: 10,
           desc: 'A quick win!',
           time: '12/12/2019 10:59:30am'
@@ -63,6 +63,7 @@ function detail(req, param){
           desc: 'Asked technical questions',
           time: '12/12/2019 10:59:30am'
         },
+        */
         {
           type: 1,
           time: '12/12/2019 10:59:30am'

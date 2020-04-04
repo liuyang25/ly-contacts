@@ -15,8 +15,13 @@ export class DataStore {
     this.current = data
     sessionStorage.setItem('contacts.current', JSON.stringify(data))
   }
-  updateCurrent(){
-
+  updateActivities(activity){
+    if (!this.current.activities) {
+      this.current.activities = {}
+    }
+    this.current.activities.unshift(activity)
+    this.current.status = activity.type == 10 ? 3 : 1 // it may has other status
+    sessionStorage.setItem('contacts.current', JSON.stringify(this.current))
   }
 }
 

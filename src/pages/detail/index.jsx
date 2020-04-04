@@ -36,20 +36,85 @@ const icon = {
 @inject('dataStore', 'navigatorStore')
 class Detail extends React.PureComponent<Props> {
   state = {
-    loading: false
+    loading: false,
+    operating: false,
+    currentTime: new Date().format('MM/dd/yyyy hh:mm:ssapm'),
+    inputValue: '',
+    modalOperateStatus: false,
   }
   handleCall() {
-    message.info('todo')
+    this.setState({
+      operating: true,
+      currentTime: new Date().format('MM/dd/yyyy hh:mm:ssapm')
+    })
+
   }
   handleEmail() {
     message.info('todo')
+  }
+  onInput(e) {
+    this.setState({
+      inputValue:e.target.value
+    })
+  }
+  handleLog(){
+    const {inputValue, currentTime} = this.state
+    const {dataStore} = this.props
+    if (!inputValue || inputValue == '') {
+      return
+    }
+    // api.updateActivities().then(res => {
+      dataStore.updateActivities({
+        type: 2,
+        desc: inputValue,
+        time: currentTime
+      })
+      this.setState({
+        inputValue: '',
+        operating: false,
+      })
+    //})
+  }
+  handleStatus(){
+    const { current } = this.props.dataStore
+    if (current.status != 1) {
+      return
+    }
+    this.setState({
+      modalOperateStatus: true
+    })
+  }
+  handleHired(){
+    const {dataStore} = this.props
+    const { current } = dataStore
+    // api.updateActivities().then(res => {
+      dataStore.updateActivities({
+        type: 10,
+        desc: 'A quick win!',
+        time: new Date().format('MM/dd/yyyy hh:mm:ssapm'),
+      })
+      this.setState({
+        modalOperateStatus: false
+      })
+    //})
   }
 
   componentDidMount() {
     const { navigatorStore, dataStore } = this.props
     const { current } = dataStore
+    let self = this
     navigatorStore.setNavigator({
       title: current.name,
+      fnL:()=>{
+        let {operating} = self.state
+        if (operating) {
+          self.setState({
+            operating: false
+          })
+        } else {
+          window.history.back()
+        }
+      }
     })
     if (!current.activities) {
       this.setState({
@@ -71,11 +136,11 @@ class Detail extends React.PureComponent<Props> {
       })
     }
   }
-  render() {
+  renderDetail() {
     const { current } = this.props.dataStore
     const status = statusType[current.status]
-    console.log(status)
-    return <div id="detail">
+    return (
+      <div id="detail" key="detail">
         <div className="info-block base-info">
           <div className="info-box">
             <div className="avatar">
@@ -85,12 +150,12 @@ class Detail extends React.PureComponent<Props> {
               <div className="name">
                 {current.name}
                 {current.status == 0 && <span className="new-flag">
-                    New
+                  New
                   </span>}
               </div>
-              {status && <span className={`status ${status.style}`}>
-                  {status.text}
-                </span>}
+              {status && <span className={`status ${status.style}`} onClick={()=>this.handleStatus()}>
+                {status.text}
+              </span>}
             </div>
           </div>
           <div className="info-btns">
@@ -118,20 +183,65 @@ class Detail extends React.PureComponent<Props> {
         <div className="block-title">Activities</div>
         <div className="info-block activities">
           {current.activities && current.activities.map((item, index) => {
-              return <div className="activity" key={index}>
-                  <div className="step">
-                    {index != current.activities.length - 1 && <div className="tail" />}
-                    <img src={icon[item.type]} />
-                  </div>
-                  <div className="content">
-                    <div className="type">{activityType[item.type]}</div>
-                    <div className="time">{item.time}</div>
-                    {item.desc && <div className="desc">{item.desc}</div>}
-                  </div>
-                </div>
-            })}
+            return <div className="activity" key={index}>
+              <div className="step">
+                {index != current.activities.length - 1 && <div className="tail" />}
+                <img src={icon[item.type]} />
+              </div>
+              <div className="content">
+                <div className="type">{activityType[item.type]}</div>
+                <div className="time">{item.time}</div>
+                {item.desc && <div className="desc">{item.desc}</div>}
+              </div>
+            </div>
+          })}
         </div>
       </div>
-      }
-    }
-    export default Detail
+    )
+  }
+  renderOperating() {
+    const { current } = this.props.dataStore
+    const { currentTime, inputValue } = this.state
+    return (
+      <div id="detail-operating" key="detail-operating">
+        <div className="operation-title">
+          <div className="move-rt">
+            <img src={callImg}></img>
+            <span>Log Call</span>
+          </div>
+        </div>
+        <div className="operation-info">
+          Call Detail
+          <span>{currentTime}</span>
+        </div>
+        <div className="operation-input">
+          <textarea placeholder="what have you discussed?" value={inputValue} onChange={value=>this.onInput(value)}></textarea>
+          <div>
+            <button className={inputValue && 'enable'} onClick={()=>this.handleLog()}>Log</button>
+          </div>
+        </div>
+      </div>
+    )
+  }
+  renderModal() {
+    return (
+      <div id="modal" key="modal" onClick={()=>this.setState({modalOperateStatus: false})}>
+        <div className="options">
+          <div onClick={()=>this.handleHired()}>Mark as Hired</div>
+          <div>Follow Up</div>
+        </div>
+        <div className="cancel">
+          Cancel
+        </div>
+      </div>
+    )
+  }
+  render() {
+    const { operating, modalOperateStatus } = this.state
+    return ([
+      operating ? this.renderOperating() : this.renderDetail(),
+      modalOperateStatus && this.renderModal()
+    ])
+  }
+}
+export default Detail

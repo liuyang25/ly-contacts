@@ -4,6 +4,7 @@ import createRouter from './router/router'
 import { Provider } from 'mobx-react'
 import stores from './stores'
 import * as serviceWorker from './serviceWorker';
+import './utils/common'
 import './normalize.css'
 import './index.css';
 import 'vanilla-antd-message/dist/style.css'
