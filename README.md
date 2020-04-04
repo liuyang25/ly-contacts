@@ -9,3 +9,7 @@
   (1) Considering the process, I only made two pages for the function of demo, completed all the update activities of the details page on one page, and cached the data of the current viewing contact, and updated it directly locally after a successful operation, so as to avoid frequent calls to background data and keep the operation smooth.
   (2) Some status updates only need to change the status field in the record, so the status field is enumerated to facilitate the function expansion.
   (3) The contact status of the list page will change according to the operation of the contact, so the contact is divided into two parts to add to the global data store.
+
+the demo is deployed on http://teldrasil.top:9000. Please use a mobile phone or Mobile phone Simulation in chrome's devtool to test it.
+
+![QRCode](sitecode.png)
