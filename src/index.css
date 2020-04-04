@@ -25,6 +25,10 @@ code {
   box-sizing: border-box;
   padding: 0;
 }
+* button {
+  background: transparent;
+  border: 0;
+}
 
 .vanilla-antd-message span{
   font-size: 0.38rem!important;
