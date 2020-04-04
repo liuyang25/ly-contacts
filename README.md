@@ -1,68 +1,11 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+1. What to use: react-router mobx less express.
+2. Technical aspects:
+  (1) React single-page application. Due to time constraints, there is no first screen rendering and optimization. The target user is mainly the mobile end, so the width adaptive rem layout is made.
+  (2) Cached data is placed in a service of express because it is considered to be deployed independently of non-webpackDevserver. The mockserver's code is in a separate directory in the same code repository.
+  (3) Information security: sensitive data should be desensitized, encrypted during transmission, and https should be used in deployment. But I didn't do it because of the limited time.
+  (4)I'm thinking of using cordova to do a webview to embed the written h5 into app, if there's still time.
+3. Testing: first of all, the process in demo, the change order of installation user state has been self-tested, at the same time, other states are also processed and judged in the development process, and the operation results of different states are debugged by using mock data.
+4. Design ideas:
+  (1) Considering the process, I only made two pages for the function of demo, completed all the update activities of the details page on one page, and cached the data of the current viewing contact, and updated it directly locally after a successful operation, so as to avoid frequent calls to background data and keep the operation smooth.
+  (2) Some status updates only need to change the status field in the record, so the status field is enumerated to facilitate the function expansion.
+  (3) The contact status of the list page will change according to the operation of the contact, so the contact is divided into two parts to add to the global data store.
