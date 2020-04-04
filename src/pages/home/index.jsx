@@ -78,7 +78,7 @@ class Home extends React.PureComponent<Props> {
         {loading && <Loading />}
         <div className="header">
           <input
-            placeholder="input search text"
+            placeholder="Search Contact"
             onChange={value => this.handleSearch(value)}
           />
         </div>
